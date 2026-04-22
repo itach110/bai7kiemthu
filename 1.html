@@ -36,6 +36,16 @@
             <option value="28">SV 28</option>
             <option value="29">SV 29</option>
             <option value="30">SV 30</option>
+            <option value="31">SV 31</option>
+            <option value="32">SV 32</option>
+            <option value="33">SV 33</option>
+            <option value="34">SV 34</option>
+            <option value="35">SV 35</option>
+            <option value="36">SV 36</option>
+            <option value="37">SV 37</option>
+            <option value="38">SV 38</option>
+            <option value="39">SV 39</option>
+            <option value="40">SV 40</option>
         </select>
     </div>
 
@@ -126,6 +136,66 @@ const svRules = {
         email: (v) => !/\d/.test(v) || "Email không được chứa số.",
         phone: (v) => v.length === 11 || "SĐT phải đúng 11 số.",
         pass: (v) => v.length >= 10 || "Mật khẩu phải có ít nhất 10 ký tự."
+    },
+    "31": {
+        name: (v) => !/\s/.test(v) || "Họ tên không được chứa dấu cách.",
+        email: (v) => v.startsWith('user') || "Email phải bắt đầu bằng 'user'.",
+        phone: (v) => !v.endsWith('0') || "Số điện thoại không được kết thúc bằng số '0'.",
+        pass: (v) => !v.includes('@') || "Mật khẩu không được chứa ký tự đặc biệt '@'."
+    },
+    "32": {
+        name: (v) => v.trim().split(/\s+/).length >= 2 || "Họ tên phải có ít nhất 2 từ.",
+        email: (v) => v.startsWith('user') || "Email phải bắt đầu bằng 'user'.",
+        phone: (v) => v.startsWith('09') || "Số điện thoại phải bắt đầu bằng '09'.",
+        pass: (v) => !/(012|123|234|345|456|567|678|789)/.test(v) || "Mật khẩu không được chứa số liên tiếp."
+    },
+    "33": {
+        name: (v) => /[A-Z]/.test(v) || "Họ tên phải có ít nhất một chữ cái viết hoa.",
+        email: (v) => v.length >= 15 || "Email phải có ít nhất 15 ký tự.",
+        phone: (v) => v.startsWith('09') || "Số điện thoại phải bắt đầu bằng '09'.",
+        pass: (v) => !/(012|123|234|345|456|567|678|789)/.test(v) || "Mật khẩu không được chứa số liên tiếp."
+    },
+    "34": {
+        name: (v) => !/\s/.test(v) || "Họ tên không được chứa dấu cách.",
+        email: (v) => /^[a-zA-Z0-9@.]+$/.test(v) || "Email không được chứa ký tự đặc biệt ngoài '@' và '.'.",
+        phone: (v) => !/(\d)\1\1/.test(v) || "Số điện thoại không được chứa số lặp lại 3 lần liên tiếp.",
+        pass: (v) => !v.includes('@') || "Mật khẩu không được chứa ký tự đặc biệt '@'."
+    },
+    "35": {
+        name: (v) => !/[!@#$%^&*(),.?":{}|<>]/.test(v) || "Họ tên không được chứa ký tự đặc biệt.",
+        email: (v) => v.length >= 15 || "Email phải có ít nhất 15 ký tự.",
+        phone: (v) => v.length === 11 || "Số điện thoại phải có đúng 11 số.",
+        pass: (v) => v.length >= 10 || "Mật khẩu phải có ít nhất 10 ký tự."
+    },
+    "36": {
+        name: (v) => v.length <= 20 || "Họ tên không được chứa hơn 20 ký tự.",
+        email: (v) => /^[a-zA-Z0-9@.]+$/.test(v) || "Email không được chứa ký tự đặc biệt ngoài '@' và '.'.",
+        phone: (v) => !v.endsWith('0') || "Số điện thoại không được kết thúc bằng số '0'.",
+        pass: (v) => (v.match(/[A-Z]/g) || []).length >= 2 || "Mật khẩu phải chứa ít nhất 2 chữ cái in hoa."
+    },
+    "37": {
+        name: (v) => !/[!@#$%^&*(),.?":{}|<>]/.test(v) || "Họ tên không được chứa ký tự đặc biệt.",
+        email: (v) => (v.split('@')[0].match(/\./g) || []).length === 2 || "Email phải có đúng 2 ký tự '.' trước '@'.",
+        phone: (v) => v.startsWith('09') || "Số điện thoại phải bắt đầu bằng '09'.",
+        pass: (v) => (v.match(/\d/g) || []).length >= 3 || "Mật khẩu phải có ít nhất 3 số."
+    },
+    "38": {
+        name: (v) => !/\s/.test(v) || "Họ tên không được chứa dấu cách.",
+        email: (v) => /^[a-zA-Z0-9@.]+$/.test(v) || "Email không được chứa ký tự đặc biệt ngoài '@' và '.'.",
+        phone: (v) => !/(\d)\1\1/.test(v) || "Số điện thoại không được chứa số lặp lại 3 lần liên tiếp.",
+        pass: (v) => (v.match(/[A-Z]/g) || []).length >= 2 || "Mật khẩu phải chứa ít nhất 2 chữ cái in hoa."
+    },
+    "39": {
+        name: (v) => v.length <= 20 || "Họ tên không được chứa hơn 20 ký tự.",
+        email: (v) => !/\d/.test(v) || "Email không được chứa số.",
+        phone: (v) => !v.endsWith('0') || "Số điện thoại không được kết thúc bằng số '0'.",
+        pass: (v) => !/(012|123|234|345|456|567|678|789)/.test(v) || "Mật khẩu không được chứa số liên tiếp."
+    },
+    "40": {
+        name: (v) => v.length <= 20 || "Họ tên không được chứa hơn 20 ký tự.",
+        email: (v) => /^[a-zA-Z0-9@.]+$/.test(v) || "Email không được chứa ký tự đặc biệt ngoài '@' và '.'.",
+        phone: (v) => /^[02468]+$/.test(v) || "Số điện thoại chỉ được chứa số chẵn.",
+        pass: (v) => !v.includes('@') || "Mật khẩu không được chứa ký tự đặc biệt '@'."
     }
 };
 
